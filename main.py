@@ -7,7 +7,8 @@ import urllib
 import os
 import time
 
-token =''#Your Telegram API Key Here
+prints(colors.blue,'\nEnter Your API KEY ',end='')
+token = input()
 LINK = 'https://api.telegram.org/bot{}/'.format(token)
 
 def StatusResponse(response):
