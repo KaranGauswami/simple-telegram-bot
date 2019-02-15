@@ -6,12 +6,11 @@ import json
 import urllib
 import os
 import time
+prints(colors.blue,'\nEnter Your API KEY : ',end='')
+token = input()
+LINK = 'https://api.telegram.org/bot{}/'.format(token)
 
-def main():
-    prints(colors.blue,'\nEnter Your API KEY :',end='')
-    token = input()
-    LINK = 'https://api.telegram.org/bot{}/'.format(token)
-
+def main():    
     os.system('clear')
     latestupdateid = None
     while True:
