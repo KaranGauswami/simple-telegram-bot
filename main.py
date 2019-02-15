@@ -7,9 +7,22 @@ import urllib
 import os
 import time
 
-prints(colors.blue,'\nEnter Your API KEY :',end='')
-token = input()
-LINK = 'https://api.telegram.org/bot{}/'.format(token)
+def main():
+    prints(colors.blue,'\nEnter Your API KEY :',end='')
+    token = input()
+    LINK = 'https://api.telegram.org/bot{}/'.format(token)
+
+    os.system('clear')
+    latestupdateid = None
+    while True:
+        prints(colors.yellow,'Running Smoothly\n')
+        updates = getUpdates(latestupdateid)
+        if (len(updates['result'])>0):
+            prints(colors.cyan,'New Message Arrived\n')
+            latestupdateid = getLatestId(updates)+1
+            code()
+        time.sleep(1)
+        
 
 def StatusResponse(response):
     if response.status_code==200:
@@ -78,19 +91,6 @@ def code():
         prints(colors.red,e)
         chatid = getLastIdMessage()
         sendMessage(chatid,'Somthing is Wrong')
-
-def main():
-    os.system('clear')
-    latestupdateid = None
-    while True:
-        prints(colors.yellow,'Running Smoothly\n')
-        updates = getUpdates(latestupdateid)
-        if (len(updates['result'])>0):
-            prints(colors.cyan,'New Message Arrived\n')
-            latestupdateid = getLatestId(updates)+1
-            code()
-        time.sleep(1)
-        
 
 if __name__=='__main__':
     try:
