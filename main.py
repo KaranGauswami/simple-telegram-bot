@@ -6,9 +6,11 @@ import json
 import urllib
 import os
 import time
+
 prints(colors.blue,'\nEnter Your API KEY : ',end='')
+
 token = input()
-LINK = 'https://api.telegram.org/bot{}/'.format(token)
+LINK = f'https://api.telegram.org/bot{token}/'
 
 def main():    
     os.system('clear')
@@ -49,7 +51,7 @@ def getJson(response):
     return JsonFormat
 
 def getUpdates(offset=None):
-    link = LINK+'getUpdates?timeout=100'
+    link = f'{LINK}getUpdates?timeout=100'
     if offset:
         link+='&offset={}'.format(offset)
     JsonData = getJsonFromURL(link)
@@ -57,7 +59,7 @@ def getUpdates(offset=None):
 
 def sendMessage(chat_id,text):
     text = urllib.parse.quote_plus(text)
-    link = LINK + 'sendMessage?text={}&chat_id={}'.format(text,chat_id)
+    link = f'{LINK}sendMessage?text={text}&chat_id={chat_id}'
     response = requests.get(link)
     return response
 
