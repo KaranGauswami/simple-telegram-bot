@@ -1,19 +1,15 @@
 from prints import prints as print
 from rcolors import colors
 
-import requests
-import json
-import urllib
-import os
-import time
+import requests,json,urllib,os,time
 
-print(colors.blue,'\nEnter Your API KEY : ',end='')
-
+os.system('clear')
+print(colors.orange,'\nEnter Your API KEY : ',end='')
 token = input()
 LINK = f'https://api.telegram.org/bot{token}/'
+os.system('clear')
 
 def main():    
-    os.system('clear')
     latestupdateid = None
     while True:
         print(colors.yellow,'Running Smoothly\n')
@@ -31,24 +27,17 @@ def StatusResponse(response):
     else:
         print(colors.red,'SOMETHING IS WRONG !!\n')
 
-def getResponse(link):
+
+def getJsonFromURL(link):
     try:
         response = requests.get(link)
         response.raise_for_status()
         StatusResponse(response)
-        return response
+        JsonFormat = json.loads(response.text)
+        return JsonFormat
     except Exception as e:
-    	print(colors.red,e)
+        print(colors.red,e)
 
-
-def getJsonFromURL(link):
-    response = getResponse(link)
-    JsonFormat = getJson(response)
-    return JsonFormat
-
-def getJson(response):
-    JsonFormat = json.loads(response.text)
-    return JsonFormat
 
 def getUpdates(offset=None):
     link = f'{LINK}getUpdates?timeout=100'
