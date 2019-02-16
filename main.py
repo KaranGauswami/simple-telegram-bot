@@ -1,6 +1,6 @@
 from clear import clear
 from prints import prints as print
-from rcolors import colors
+from colors import colors
 
 import requests,json,urllib,os,time
 
