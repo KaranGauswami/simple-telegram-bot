@@ -1,13 +1,14 @@
+from clear import clear
 from prints import prints as print
 from rcolors import colors
 
 import requests,json,urllib,os,time
 
-os.system('clear')
+clear()
 print(colors.orange,'\nEnter Your API KEY : ',end='')
 token = input()
 LINK = f'https://api.telegram.org/bot{token}/'
-os.system('clear')
+clear()
 
 def main():    
     latestupdateid = None
