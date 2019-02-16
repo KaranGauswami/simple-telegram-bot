@@ -1,4 +1,4 @@
-from prints_function import prints
+from prints import prints as print
 from rcolors import colors
 
 import requests
