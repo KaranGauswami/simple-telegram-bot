@@ -7,7 +7,7 @@ import urllib
 import os
 import time
 
-prints(colors.blue,'\nEnter Your API KEY : ',end='')
+print(colors.blue,'\nEnter Your API KEY : ',end='')
 
 token = input()
 LINK = f'https://api.telegram.org/bot{token}/'
@@ -16,10 +16,10 @@ def main():
     os.system('clear')
     latestupdateid = None
     while True:
-        prints(colors.yellow,'Running Smoothly\n')
+        print(colors.yellow,'Running Smoothly\n')
         updates = getUpdates(latestupdateid)
         if (len(updates['result'])>0):
-            prints(colors.cyan,'New Message Arrived\n')
+            print(colors.cyan,'New Message Arrived\n')
             latestupdateid = getLatestId(updates)+1
             code()
         time.sleep(1)
@@ -27,9 +27,9 @@ def main():
 
 def StatusResponse(response):
     if response.status_code==200:
-        prints(colors.lightgreen,'SUCCESSFULL RESPONSE\n')
+        print(colors.lightgreen,'SUCCESSFULL RESPONSE\n')
     else:
-        prints(colors.red,'SOMETHING IS WRONG !!\n')
+        print(colors.red,'SOMETHING IS WRONG !!\n')
 
 def getResponse(link):
     try:
@@ -38,7 +38,7 @@ def getResponse(link):
         StatusResponse(response)
         return response
     except Exception as e:
-    	prints(colors.red,e)
+    	print(colors.red,e)
 
 
 def getJsonFromURL(link):
@@ -79,7 +79,7 @@ def getLastIdMessage():
         ChatID  =  JsonData['result'][LastMessage]['message']['chat']['id']
         Message =  JsonData['result'][LastMessage]['message']['text']
     except Exception as e:
-        prints(colors.red,e)
+        print(colors.red,e)
         return ChatID
     else:
         return ChatID,Message
@@ -89,7 +89,7 @@ def code():
         chatid,message = getLastIdMessage()
         sendMessage(chatid,message[::-1])
     except Exception as e:
-        prints(colors.red,e)
+        print(colors.red,e)
         chatid = getLastIdMessage()
         sendMessage(chatid,'Somthing is Wrong')
 
@@ -97,4 +97,4 @@ if __name__=='__main__':
     try:
         main()
     except KeyboardInterrupt:
-        prints(colors.lightred,'\nExiting')
+        print(colors.lightred,'\nExiting')
