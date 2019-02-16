@@ -1,11 +1,11 @@
 from clear import clear
 from prints import prints as print
-from colors import colors
+from colors import colors as color
 
 import requests,json,urllib,os,time
 
 clear()
-print(colors.orange,'\nEnter Your API KEY : ',end='')
+print(color.orange,'\nEnter Your API KEY : ',end='')
 token = input()
 LINK = f'https://api.telegram.org/bot{token}/'
 clear()
@@ -13,10 +13,10 @@ clear()
 def main():    
     latestupdateid = None
     while True:
-        print(colors.yellow,'Running Smoothly\n')
+        print(color.yellow,'Running Smoothly\n')
         updates = getUpdates(latestupdateid)
         if (len(updates['result'])>0):
-            print(colors.cyan,'New Message Arrived\n')
+            print(color.cyan,'New Message Arrived\n')
             latestupdateid = getLatestId(updates)+1
             code()
         time.sleep(1)
@@ -24,9 +24,9 @@ def main():
 
 def StatusResponse(response):
     if response.status_code==200:
-        print(colors.lightgreen,'SUCCESSFULL RESPONSE\n')
+        print(color.lightgreen,'SUCCESSFULL RESPONSE\n')
     else:
-        print(colors.red,'SOMETHING IS WRONG !!\n')
+        print(color.red,'SOMETHING IS WRONG !!\n')
 
 
 def getJsonFromURL(link):
@@ -37,7 +37,7 @@ def getJsonFromURL(link):
         JsonFormat = json.loads(response.text)
         return JsonFormat
     except Exception as e:
-        print(colors.red,e)
+        print(color.red,e)
 
 
 def getUpdates(offset=None):
@@ -69,7 +69,7 @@ def getLastIdMessage():
         ChatID  =  JsonData['result'][LastMessage]['message']['chat']['id']
         Message =  JsonData['result'][LastMessage]['message']['text']
     except Exception as e:
-        print(colors.red,e)
+        print(color.red,e)
         return ChatID
     else:
         return ChatID,Message
@@ -79,7 +79,7 @@ def code():
         chatid,message = getLastIdMessage()
         sendMessage(chatid,message[::-1])
     except Exception as e:
-        print(colors.red,e)
+        print(color.red,e)
         chatid = getLastIdMessage()
         sendMessage(chatid,'Somthing is Wrong')
 
@@ -87,4 +87,4 @@ if __name__=='__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(colors.lightred,'\nExiting')
+        print(color.lightred,'\nExiting')
