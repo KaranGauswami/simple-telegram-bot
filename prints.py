@@ -2,7 +2,7 @@ from __future__ import print_function
 import platform
 Platform = platform.system()
 if Platform != 'Windows':
-    import builtins as __builtin__
+    import builtins
     def prints(color,*args, **kwargs):
         builtins.print('\033[01m',end='')
         builtins.print(color,end='')
