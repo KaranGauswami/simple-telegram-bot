@@ -4,11 +4,11 @@ Platform = platform.system()
 if Platform != 'Windows':
     import builtins as __builtin__
     def prints(color,*args, **kwargs):
-        __builtin__.print('\033[01m',end='')
-        __builtin__.print(color,end='')
-        __builtin__.print(*args,**kwargs)
-        __builtin__.print('\033[0m',end='')
+        builtins.print('\033[01m',end='')
+        builtins.print(color,end='')
+        builtins.print(*args,**kwargs)
+        builtins.print('\033[0m',end='')
 else:
     def prints(color,*args,**kwargs):
-        __builtin__.print(*args,**kwargs)
+        builtins.print(*args,**kwargs)
 
