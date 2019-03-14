@@ -21,19 +21,10 @@ def main():
             code()
         time.sleep(1)
         
-
-def StatusResponse(response):
-    if response.status_code==200:
-        print(color.lightgreen,'SUCCESSFULL RESPONSE\n')
-    else:
-        print(color.red,'SOMETHING IS WRONG !!\n')
-
-
 def getJsonFromURL(link):
     try:
         response = requests.get(link)
         response.raise_for_status()
-        StatusResponse(response)
         JsonFormat = json.loads(response.text)
         return JsonFormat
     except Exception as e:
