@@ -56,6 +56,7 @@ def getLastIdMessage():
     LastMessage = LengthOfMessages-1
     ChatID=None
     Message=None
+    print(JsonData['result'][LastMessage]['message'])
     try:
         ChatID  =  JsonData['result'][LastMessage]['message']['chat']['id']
         Message =  JsonData['result'][LastMessage]['message']['text']
