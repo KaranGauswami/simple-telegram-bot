@@ -1,6 +1,6 @@
-from clear import clear
-from prints import prints as print
-from colors import colors as color
+from source.clear import clear
+from source.prints import prints as print
+from source.colors import colors as color
 
 import requests,json,urllib,os,time
 
